@@ -29,22 +29,16 @@ public class Main {
 class Solution {
     public int getSecondLargest(int[] arr) {
         // Code Here
-        int largest=Integer.MIN_VALUE;
-        int secLarge=Integer.MIN_VALUE;
-        for(int i=0;i<arr.length;i++){ 
-            if(arr[i]>largest){
-                secLarge=largest;
-                largest=arr[i];
-            }
-            else if(arr[i]<largest && arr[i]>secLarge) {
-                secLarge=arr[i];
-                
+        int max=Integer.MIN_VALUE;
+        for(int i=0;i<arr.length;i++){
+            max=Math.max(max,arr[i]);
+        }
+        int secMax=-1;
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]>secMax && arr[i]<max){
+            secMax=arr[i];
             }
         }
-        if(secLarge>0){
-            return secLarge;
-        } else {
-            return -1;
-        }
+        return secMax;
     } 
 }
